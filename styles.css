@@ -1,0 +1,12 @@
+/* styles.css */
+body { margin:0; font-family: system-ui, Arial; background:#0b1020; color:#eaf0ff; }
+.wrap{ max-width:900px; margin:auto; padding:24px; }
+.topbar{ display:flex; justify-content:space-between; align-items:center; }
+.logo{ width:200px; background:#fff; padding:10px; border-radius:10px; }
+.card{ margin-top:16px; padding:20px; border-radius:16px; background:#101a33; }
+.row{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+input{ padding:10px; border-radius:10px; border:1px solid #2a3a6b; background:#070a14; color:#fff; }
+button{ padding:10px 14px; border-radius:10px; border:1px solid #2a3a6b; background:#16224a; color:#fff; cursor:pointer; }
+button.primary{ background:#234; }
+.msg.ok{ color:#48ff8a; }
+.msg.bad{ color:#ff5a7a; }

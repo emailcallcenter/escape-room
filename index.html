@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>San Diego 2026 — Escape Room</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img id="logoEl" class="logo" src="SDlogo.jpg" alt="San Diego 2026 logo" />
+      </div>
+      <div class="hud">
+        <div class="pill">
+          <strong>Time Left:</strong>
+          <span id="timer" class="timer">01:00:00</span>
+        </div>
+        <div class="pill">
+          <button id="musicBtn" type="button" disabled>🔇 Music Off</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div id="screen"></div>
+      <div class="footer">
+        <div id="status" class="small"></div>
+        <div class="small"></div>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
