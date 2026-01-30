@@ -85,8 +85,8 @@ const rooms = [
       </p>
 
       <p>
-        I'm sure you can figure it out. My password is pretty simple! Here's how you decrypt my email:
-        <strong>What comes first matters most, then count only what was truly said</strong>.
+        I'm sure you can figure it out. My password is pretty simple!
+        Here's how you decrypt my email: <strong>What comes first matters most, then count only what was truly said</strong>.
       </p>
 
       <div class="row">
@@ -107,36 +107,19 @@ const rooms = [
     render: () => `
       <h2>Clue 3 — Bathroom Emergency</h2>
 
-      <p>
-        I’m in. Thank you. Crisis averted… and immediately replaced.
-      </p>
-
-      <p>
-        I’m used to knowing exactly where relief can be found.
-      </p>
-
-      <p>
-        Travel has disrupted that luxury, and time is ticking.
-      </p>
+      <p>I’m in. Thank you. Crisis averted… and immediately replaced.</p>
+      <p>I’m used to knowing exactly where relief can be found.</p>
+      <p>Travel has disrupted that luxury, and time is ticking.</p>
 
       <p>
         Which website points the way to the nearest bathroom?
       </p>
 
       <div class="row">
-        <span style="
-          padding:12px 10px;
-          border:1px solid var(--border);
-          border-radius:12px;
-          background:rgba(7,10,20,.55);
-          font-weight:700;
-          opacity:.8;
-        ">https://</span>
-
+        <span class="prefix">https://</span>
         <input id="answerInput" type="text"
           placeholder="website name…"
           autocomplete="off" autocapitalize="none" spellcheck="false" />
-
         <button class="primary" id="unlockBtn">Unlock</button>
       </div>
 
@@ -151,14 +134,11 @@ const rooms = [
     render: () => `
       <h2>Clue 4 — Bank Withdrawal</h2>
 
-      <p>
-        What a relief, thanks for helping me find the bathroom.
-      </p>
+      <p>What a relief, thanks for helping me find the bathroom.</p>
 
       <p>
         With one problem solved, another task awaits.
-        Some give with a tap.
-        I prefer the weight of it in my hands.
+        Some give with a tap. I prefer the weight of it in my hands.
       </p>
 
       <p>
@@ -169,7 +149,7 @@ const rooms = [
       </p>
 
       <div class="row">
-        <span style="padding:12px 10px;border:1px solid var(--border);border-radius:12px;background:rgba(7,10,20,.55);font-weight:800;">$</span>
+        <span class="prefix">$</span>
         <input id="answerInput" type="text"
           placeholder="Enter amount…"
           inputmode="decimal"
@@ -188,9 +168,7 @@ const rooms = [
     render: () => `
       <h2>Clue 5 — Different Languages</h2>
 
-      <p>
-        Perfect — thank you for helping me with my bank withdrawal.
-      </p>
+      <p>Perfect — thank you for helping me with my bank withdrawal.</p>
 
       <p>
         I’ve noticed something impressive about the volunteers here.
@@ -200,7 +178,7 @@ const rooms = [
       </p>
 
       <div class="row">
-        <span style="padding:12px 10px;border:1px solid var(--border);border-radius:12px;background:rgba(7,10,20,.55);font-weight:800;">📅</span>
+        <span class="prefix">📅</span>
         <input id="answerInput" type="text"
           placeholder="Enter date…"
           autocomplete="off" autocapitalize="none" spellcheck="false" />
@@ -218,9 +196,7 @@ const rooms = [
     render: () => `
       <h2>Clue 6 — Applicant Requirements</h2>
 
-      <p>
-        You’ve been so helpful! All of God’s people are. What a witness this is to the city!
-      </p>
+      <p>You’ve been so helpful! All of God’s people are. What a witness this is to the city!</p>
 
       <p>
         You know what, even the staff at the hotel were commenting that they noticed our dress and grooming is different,
@@ -251,17 +227,10 @@ const rooms = [
     render: () => `
       <h2>Clue 7 — Workflow Wisdom</h2>
 
-      <p>
-        Look at you — so helpful!
-      </p>
+      <p>Look at you — so helpful!</p>
+      <p>I hear there’s a map behind the logic that keeps you on track.</p>
 
-      <p>
-        I hear there’s a map behind the logic that keeps you on track.
-      </p>
-
-      <p>
-        Tell me… how many stops does that map have?
-      </p>
+      <p>Tell me… how many stops does that map have?</p>
 
       <div class="row">
         <input id="answerInput" type="text"
@@ -276,34 +245,123 @@ const rooms = [
     nextId: "clue8"
   },
 
-{
-  id: "clue8",
-  answer: "143143",
+  {
+    id: "clue8",
+    answer: "143143",
+    render: () => `
+      <h2>Clue 8 — Double Email</h2>
+
+      <p>
+        Clearly I’m a little clumsy! Don’t be surprised if I accidentally email you twice with the same question.
+      </p>
+
+      <p>
+        I know you have a prepared email for moments like that.
+        Out of curiosity… what <strong>sample ticket number</strong> appears in that message?
+      </p>
+
+      <div class="row">
+        <input id="answerInput" type="text"
+          placeholder="Enter ticket number…"
+          inputmode="numeric"
+          autocomplete="off" autocapitalize="none" spellcheck="false" />
+        <button class="primary" id="unlockBtn">Unlock</button>
+      </div>
+
+      <div id="msg" class="msg"></div>
+    `,
+    nextId: "clue9"
+  },
+
+  {
+    id: "clue9",
+    // no answer: this clue validates internally
+    render: () => `
+      <h2>Clue 9 — Categories & Connections</h2>
+
+      <p>
+        I’ve been sending a lot of emails to you guys, and I’m starting to notice a pattern — you guys are experts at all sorts of topics!
+      </p>
+
+      <p>
+        Each question obviously belongs somewhere — but only if you know how to sort it..
+        I'm guessing you have a system to organize them!
+      </p>
+
+      <p>
+        I’m curious… do you know the Redmine category for each question below?
+      </p>
+
+      <p><strong>Match each message to the category that makes the most sense.</strong></p>
+
+      <div class="match-grid">
+        <div class="match-col">
+          <h3 class="match-title">Question</h3>
+          <div id="topics"></div>
+        </div>
+
+        <div class="match-col">
+          <h3 class="match-title">Category</h3>
+          <div id="categories"></div>
+        </div>
+      </div>
+
+      <div class="row"></div>
+      <div id="msg" class="msg"></div>
+    `,
+    nextId: "clue10"
+  },
+
+  {
+  id: "clue10",
+  answer: "cookies",
   render: () => `
-    <h2>Clue 8 — Double Email</h2>
+    <h2>Clue 10 — The One Ticket</h2>
 
     <p>
-      Clearly I’m a little clumsy! Don’t be surprised if I accidentally email you twice with the same question.
+      I think I accidentally caused a mini-emergency…
+      One simple question turned into an <strong>urgent</strong> ticket,
+      and now it’s hiding somewhere in your Redmine system.
     </p>
 
     <p>
-      I know you have a prepared email for moments like that.
-      Out of curiosity… what <strong>sample ticket number</strong> appears in that message?
+      Here’s what I remember:
+      the ticket might be <em>open</em>… or it might be <em>closed</em> at this point.
+   </p>
+
+     <p>
+What I <strong>do</strong> know is that it was urgent! Yes, a very urgent ticket.
+ </p>
+
+        <p>
+And it's assigned to the person whose name starts with the letter T in <strong>AGT</strong>.
     </p>
 
+    <p>
+      The original question was about <strong>tacos</strong>, so the category should be easy to guess 🌮
+    </p>
+
+       <p>
+And because I couldn’t decide what language to use, I wrote it in Taglish (Tagalog and English),
+      So it’s probably tagged in <strong>two languages</strong>.
+    </p>
+
+    <p>
+      Once you find the ticket, open it and scroll down for your final question.
+      If you have a good memory, you'll know the answer!
+    </p>
+    
     <div class="row">
       <input id="answerInput" type="text"
-        placeholder="Enter ticket number…"
-        inputmode="numeric"
+        placeholder="Enter answer…"
         autocomplete="off" autocapitalize="none" spellcheck="false" />
-      <button class="primary" id="unlockBtn">Unlock</button>
+      <button class="primary" id="unlockBtn">Finish</button>
     </div>
 
     <div id="msg" class="msg"></div>
   `,
-  nextId: "clue9"
-},
-
+  nextId: null
+}
 
 ];
 
@@ -315,12 +373,12 @@ const timerEl = document.getElementById("timer");
 const statusEl = document.getElementById("status");
 const logoEl = document.getElementById("logoEl");
 const musicBtn = document.getElementById("musicBtn");
+const brandEl = document.getElementById("brandEl");
 
 // -----------------------------
 // State
 // -----------------------------
 let currentId = "welcome";
-let started = false;
 
 const ONE_HOUR_MS = 60 * 60 * 1000;
 let endTimeMs = null;
@@ -329,7 +387,9 @@ let timerInterval = null;
 // -----------------------------
 // Helpers
 // -----------------------------
-function normalize(s) { return (s || "").trim().toLowerCase(); }
+function normalizeSpaces(s) {
+  return String(s || "").trim().toLowerCase().replace(/\s+/g, " ");
+}
 
 function formatHMS(ms) {
   const total = Math.max(0, Math.floor(ms / 1000));
@@ -344,11 +404,66 @@ function timeRemainingMs() {
   return endTimeMs - Date.now();
 }
 
-function getRoom(id) { return rooms.find(r => r.id === id); }
+function getRoom(id) {
+  return rooms.find(r => r.id === id);
+}
 
 function goTo(id) {
   currentId = id;
   render();
+}
+
+// -----------------------------
+// Date parsing for clue 5
+// -----------------------------
+function tryParseDateToISO(s) {
+  const raw = normalizeSpaces(s);
+
+  // MM/DD/YYYY or M/D/YYYY (also supports dashes)
+  const mdy = raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+  if (mdy) {
+    const mm = String(mdy[1]).padStart(2, "0");
+    const dd = String(mdy[2]).padStart(2, "0");
+    const yyyy = mdy[3];
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  // ISO: YYYY-MM-DD
+  const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) return raw;
+
+  // Month name formats
+  const d = new Date(s);
+  if (!isNaN(d.getTime())) {
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  return null;
+}
+
+// -----------------------------
+// Answer checking
+// -----------------------------
+function isCorrectAnswer(room, attemptRaw) {
+  const attempt = normalizeSpaces(attemptRaw);
+  const correct = normalizeSpaces(room.answer);
+
+  if (room.id === "clue4") {
+    const cleaned = attempt.replace(/\$/g, "");
+    return cleaned === "245" || cleaned === "245.00" || cleaned === "245.0" || cleaned === "245.000";
+  }
+
+  if (room.id === "clue5") {
+    const aISO = tryParseDateToISO(attemptRaw);
+    const cISO = tryParseDateToISO(room.answer);
+    if (aISO && cISO) return aISO === cISO;
+    return attempt === correct;
+  }
+
+  return attempt === correct;
 }
 
 // -----------------------------
@@ -372,10 +487,7 @@ function startTimer() {
 function updateTimerUI() {
   const rem = timeRemainingMs();
   timerEl.textContent = formatHMS(rem);
-
-  const danger = rem <= (10 * 60 * 1000);
-  timerEl.classList.toggle("danger", danger);
-
+  timerEl.classList.toggle("danger", rem <= (10 * 60 * 1000));
   statusEl.textContent = "";
   updateMusicIntensity(rem);
 }
@@ -390,6 +502,38 @@ function onTimeUp() {
     </div>
   `;
   document.getElementById("restartBtn").addEventListener("click", () => location.reload());
+}
+
+function showCelebrationScreen() {
+  stopMusic();
+
+  screen.innerHTML = `
+    <div class="celebrate">
+      <div class="fireworks" aria-hidden="true">
+        <span class="burst b1"></span>
+        <span class="burst b2"></span>
+        <span class="burst b3"></span>
+        <span class="burst b4"></span>
+        <span class="burst b5"></span>
+      </div>
+
+      <h1>🎉 You Did It!</h1>
+
+      <p>
+        <strong>Thank you!</strong><br />
+        You have answered all my questions!
+      </p>
+
+      <p>
+        Please head to the main room to see which group helped me the quickest!
+      </p>
+
+      <p class="small">
+        Either way, love ya!<br />
+        — <strong>Ima Del Gate</strong>
+      </p>
+    </div>
+  `;
 }
 
 // -----------------------------
@@ -412,7 +556,7 @@ function ensureAudio() {
   master.connect(audioCtx.destination);
 
   droneOsc = audioCtx.createOscillator();
-  droneOsc.type = "triangle"; // warm, calm, non-scary
+  droneOsc.type = "triangle";
   droneOsc.frequency.value = 140;
 
   droneGain = audioCtx.createGain();
@@ -483,65 +627,119 @@ function updateMusicIntensity(remMs) {
   droneGain.gain.setTargetAtTime(0.06 + intensity * 0.03, audioCtx.currentTime, 0.4);
 
   const nextMs = Math.max(320, 950 - intensity * 650);
-  if (tickInterval && Math.abs(nextMs - tickMs) > 60) {
-    startTicking(nextMs);
-  }
+  if (tickInterval && Math.abs(nextMs - tickMs) > 60) startTicking(nextMs);
 }
 
 // -----------------------------
-// Answer checking (with friendly flexibility)
+// Clue 9: Matching (Among Us style)
 // -----------------------------
-function normalizeSpaces(s) {
-  return String(s || "").trim().toLowerCase().replace(/\s+/g, " ");
+const matchPairs = {
+  "Will the Friends for Life activity involve a lot of walking?": "Activities",
+
+  "Can I please have the Harbor Sunset Cruise tour instead of Taste and Rejoice?":
+    "DM – Scheduling",
+
+  "Can you please make me an official invitation letter for my visa interview?":
+    "DM – Visa Issues",
+
+  "My flight is delayed and I’m now arriving at 3AM, will there be greeters at that time?":
+    "Airport",
+
+  "I have 7 big suitcases. Will it fit in the car or bus when we are picked up?":
+    "Transportation",
+
+  "I’m on the way to my shift at the Marquis Hotel, but I forgot to pack my uniform — is that OK?":
+    "VM – General",
+
+  "I’m developing a mild cough, what should I do?":
+    "Safety"
+};
+
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
-function tryParseDateToISO(s) {
-  const raw = normalizeSpaces(s);
+function initMatchingClue() {
+  const topicsEl = document.getElementById("topics");
+  const catsEl = document.getElementById("categories");
+  const msg = document.getElementById("msg");
 
-  // MM/DD/YYYY or M/D/YYYY (also supports dashes)
-  const mdy = raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
-  if (mdy) {
-    const mm = String(mdy[1]).padStart(2, "0");
-    const dd = String(mdy[2]).padStart(2, "0");
-    const yyyy = mdy[3];
-    return `${yyyy}-${mm}-${dd}`;
-  }
+  topicsEl.innerHTML = "";
+  catsEl.innerHTML = "";
+  msg.textContent = "";
+  msg.className = "msg";
 
-  // ISO: YYYY-MM-DD
-  const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (iso) return raw;
+  let selectedTopicEl = null;
+  let matchedCount = 0;
 
-  // Month name formats (Oct 27, 2025 / October 27 2025, etc.)
-  const d = new Date(s);
-  if (!isNaN(d.getTime())) {
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const dd = String(d.getDate()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd}`;
-  }
+  const topics = shuffle(Object.keys(matchPairs));
+  const categories = shuffle([...new Set(Object.values(matchPairs))]);
 
-  return null;
-}
+  topics.forEach(t => {
+    const div = document.createElement("button");
+    div.type = "button";
+    div.className = "match-item topic";
+    div.textContent = t;
 
-function isCorrectAnswer(room, attemptRaw) {
-  const attempt = normalizeSpaces(attemptRaw);
-  const correct = normalizeSpaces(room.answer);
+    div.addEventListener("click", () => {
+      if (div.classList.contains("matched")) return;
 
-  // Clue 4: accept 245 OR 245.00 (and allow "$245", "245.0", "245.000" just in case)
-  if (room.id === "clue4") {
-    const cleaned = attempt.replace(/\$/g, "");
-    return cleaned === "245" || cleaned === "245.00" || cleaned === "245.0" || cleaned === "245.000";
-  }
+      document.querySelectorAll(".match-item.topic").forEach(e => e.classList.remove("active"));
+      div.classList.add("active");
+      selectedTopicEl = div;
+    });
 
-  // Clue 5: accept multiple date formats (October 27, 2025 / 10/27/2025 / 2025-10-27)
-  if (room.id === "clue5") {
-    const aISO = tryParseDateToISO(attemptRaw);
-    const cISO = tryParseDateToISO(room.answer);
-    if (aISO && cISO) return aISO === cISO;
-    return attempt === correct;
-  }
+    topicsEl.appendChild(div);
+  });
 
-  return attempt === correct;
+  categories.forEach(c => {
+    const div = document.createElement("button");
+    div.type = "button";
+    div.className = "match-item category";
+    div.textContent = c;
+
+    div.addEventListener("click", () => {
+      if (!selectedTopicEl) return;
+      if (div.classList.contains("matched")) return;
+
+      const topic = selectedTopicEl.textContent;
+      const correctCategory = matchPairs[topic];
+      const isCorrect = correctCategory === div.textContent;
+
+      if (isCorrect) {
+        selectedTopicEl.classList.remove("active");
+        selectedTopicEl.classList.add("matched");
+        div.classList.add("matched");
+        selectedTopicEl.disabled = true;
+        div.disabled = true;
+
+        selectedTopicEl = null;
+        matchedCount++;
+
+        if (matchedCount === topics.length) {
+          msg.textContent = "All matched! ✅";
+          msg.className = "msg ok";
+          showNextButton(getRoom("clue9"));
+        }
+      } else {
+        div.classList.add("bad");
+        selectedTopicEl.classList.add("bad");
+        setTimeout(() => {
+          div.classList.remove("bad");
+          selectedTopicEl.classList.remove("bad", "active");
+          selectedTopicEl = null;
+        }, 450);
+      }
+    });
+
+    catsEl.appendChild(div);
+  });
 }
 
 // -----------------------------
@@ -570,20 +768,31 @@ function showNextButton(room) {
 }
 
 function render() {
-  logoEl.style.display = (currentId === "welcome") ? "block" : "none";
+  const isWelcome = currentId === "welcome";
+brandEl.classList.toggle("hidden", !isWelcome);
 
   const room = getRoom(currentId);
+  if (!room) {
+    screen.innerHTML = `<h2>Missing room: ${currentId}</h2>`;
+    return;
+  }
+
   screen.innerHTML = room.render();
 
+  // Clue 9 special (matching)
+  if (currentId === "clue9") {
+    initMatchingClue();
+    return;
+  }
+
+  // Welcome
   if (currentId === "welcome") {
     musicBtn.disabled = true;
     musicBtn.textContent = "🔇 Music Off";
 
     document.getElementById("startBtn").addEventListener("click", () => {
-      started = true;
       startTimer();
       goTo("clue1");
-
       musicBtn.disabled = false;
       setMusic(true);
     });
@@ -606,7 +815,12 @@ function render() {
     if (isCorrectAnswer(room, input.value)) {
       msg.textContent = "Unlocked! ✅";
       msg.className = "msg ok";
-      showNextButton(room);
+
+      if (!room.nextId) {
+        setTimeout(showCelebrationScreen, 600);
+      } else {
+        showNextButton(room);
+      }
     } else {
       msg.textContent = "Nope… that doesn’t work.";
       msg.className = "msg bad";

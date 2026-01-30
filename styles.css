@@ -1,12 +1,441 @@
-/* styles.css */
-body { margin:0; font-family: system-ui, Arial; background:#0b1020; color:#eaf0ff; }
-.wrap{ max-width:900px; margin:auto; padding:24px; }
-.topbar{ display:flex; justify-content:space-between; align-items:center; }
-.logo{ width:200px; background:#fff; padding:10px; border-radius:10px; }
-.card{ margin-top:16px; padding:20px; border-radius:16px; background:#101a33; }
-.row{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
-input{ padding:10px; border-radius:10px; border:1px solid #2a3a6b; background:#070a14; color:#fff; }
-button{ padding:10px 14px; border-radius:10px; border:1px solid #2a3a6b; background:#16224a; color:#fff; cursor:pointer; }
-button.primary{ background:#234; }
-.msg.ok{ color:#48ff8a; }
-.msg.bad{ color:#ff5a7a; }
+/* styles.css — matched to your screenshot + your HTML */
+
+:root{
+  --bg: #070a14;
+
+  /* Card + UI colors (deep navy like your screenshot) */
+  --panel: rgba(14, 28, 58, 0.78);
+  --panel2: rgba(7, 10, 20, 0.55);
+
+  --text: #eef2ff;
+  --muted: rgba(238,242,255,.78);
+  --border: rgba(255,255,255,.14);
+
+  --shadow: 0 12px 36px rgba(0,0,0,.35);
+  --shadowSoft: 0 10px 28px rgba(0,0,0,.28);
+
+  --ok: #2ecc71;
+  --bad: #e85d5d;
+
+  /* overall width */
+  --ui-width: 980px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 20% 15%, rgba(80,120,255,.12), transparent 60%),
+    radial-gradient(1100px 700px at 80% 25%, rgba(0,255,195,.10), transparent 55%),
+    var(--bg);
+}
+
+/* ---------- Page wrapper ---------- */
+.wrap{
+  width: min(var(--ui-width), calc(100% - 48px));
+  margin: 28px auto 40px;
+}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+/* Logo tile like your screenshot */
+.brand{
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: var(--shadowSoft);
+}
+
+.logo{
+  display: block;
+  width: 210px;      /* ← makes it big like your screenshot */
+  height: auto;
+  border-radius: 12px; /* rounds the image itself too */
+}
+
+/* HUD on right */
+.hud{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* “Time Left” line */
+.pill{
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+.timer{
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+/* Music button style like screenshot */
+#musicBtn{
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(12, 22, 46, 0.75);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: var(--shadowSoft);
+}
+
+#musicBtn:hover{ filter: brightness(1.06); }
+#musicBtn:disabled{ opacity: .6; cursor: default; }
+
+/* Timer danger */
+#timer.danger{
+  color: rgba(255,210,210,.98);
+}
+
+/* ---------- Main card ---------- */
+.card{
+  background: var(--panel);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Content area */
+#screen{
+  padding: 22px 22px 18px;
+}
+
+/* Footer line was causing the “extra answer field” look */
+.footer{
+  display: none; /* ← removes that long divider entirely */
+}
+
+/* ---------- Typography ---------- */
+.kicker{
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: .06em;
+  color: rgba(238,242,255,.85);
+  margin-bottom: 10px;
+}
+
+h1, h2{
+  margin: 10px 0 14px;
+  line-height: 1.15;
+}
+
+h1{
+  font-size: 44px;
+  font-weight: 900;
+}
+
+p{
+  color: rgba(238,242,255,.85);
+  line-height: 1.55;
+  margin: 12px 0;
+  max-width: 95ch;
+}
+
+.small{
+  font-size: 14px;
+  color: rgba(238,242,255,.78);
+}
+
+.divider{
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  margin: 18px 0;
+}
+
+/* ---------- Inputs / buttons ---------- */
+.row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+input{
+  width: min(520px, 100%);
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(8, 12, 26, 0.55);
+  color: var(--text);
+  outline: none;
+}
+
+input:focus{
+  border-color: rgba(120,160,255,.55);
+  box-shadow: 0 0 0 3px rgba(90,130,255,.18);
+}
+
+/* Default buttons */
+button{
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(12, 22, 46, 0.65);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: var(--shadowSoft);
+}
+
+button:hover{ filter: brightness(1.06); }
+button:disabled{ opacity: .55; cursor: default; }
+
+/* Primary */
+button.primary{
+  background: rgba(18, 34, 72, 0.80);
+  border-color: rgba(255,255,255,.16);
+}
+
+/* Prefix pills like https:// or $ */
+.prefix{
+  padding: 12px 10px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  background: rgba(8, 12, 26, 0.45);
+  font-weight: 900;
+  opacity: .95;
+}
+
+/* ---------- Messages ---------- */
+.msg{
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(8, 12, 26, 0.38);
+  color: rgba(238,242,255,.82);
+}
+
+.msg.ok{
+  border-color: rgba(46,204,113,.50);
+  background: rgba(46,204,113,.14);
+  color: rgba(220,255,235,.96);
+}
+
+.msg.bad{
+  border-color: rgba(232,93,93,.55);
+  background: rgba(232,93,93,.14);
+  color: rgba(255,230,230,.96);
+}
+
+/* ---------- Matching clue ---------- */
+.match-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.match-col{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match-item{
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px;
+  cursor: pointer;
+  background: rgba(8, 12, 26, 0.42);
+  user-select: none;
+}
+
+.match-item:hover{ filter: brightness(1.06); }
+
+.match-item.active{
+  outline: 2px solid rgba(90,130,255,.70);
+  box-shadow: 0 0 0 3px rgba(90,130,255,.18);
+}
+
+.match-item.matched{
+  background: rgba(46,204,113,.22);
+  border-color: rgba(46,204,113,.55);
+  color: rgba(220,255,235,.96);
+  cursor: default;
+}
+
+.match-item.bad{
+  background: rgba(232,93,93,.22);
+  border-color: rgba(232,93,93,.55);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px){
+  .wrap{
+    width: calc(100% - 32px);
+  }
+  .logo{
+    width: 180px;
+  }
+}
+
+@media (max-width: 720px){
+  .topbar{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hud{
+    align-items: flex-start;
+  }
+
+  .match-grid{
+    grid-template-columns: 1fr;
+  }
+
+  h1{
+    font-size: 38px;
+  }
+}
+
+/* --- Celebration + 8-bit fireworks --- */
+.celebrate{
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0 6px;
+}
+
+.fireworks{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .95;
+}
+
+.burst{
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,.92);
+  image-rendering: pixelated;
+  transform: translate(-50%,-50%);
+  box-shadow: none;
+  animation: burstPop 1.35s steps(1,end) infinite;
+}
+
+/* Different positions + timing */
+.b1{ left: 18%; top: 22%; animation-delay: 0s; }
+.b2{ left: 72%; top: 18%; animation-delay: .25s; }
+.b3{ left: 54%; top: 34%; animation-delay: .5s; }
+.b4{ left: 30%; top: 44%; animation-delay: .75s; }
+.b5{ left: 84%; top: 40%; animation-delay: 1s; }
+
+/* 8-bit "spark" pattern using pixel blocks (box-shadow) */
+@keyframes burstPop{
+  0%{
+    opacity: 0;
+    box-shadow: none;
+    transform: translate(-50%,-50%) scale(1);
+  }
+  10%{
+    opacity: 1;
+    box-shadow:
+      0 -18px 0 0 rgba(90,130,255,.95),
+      0  18px 0 0 rgba(0,255,195,.95),
+      -18px 0 0 0 rgba(255,255,255,.95),
+      18px  0 0 0 rgba(255,200,120,.95),
+      -12px -12px 0 0 rgba(255,120,200,.95),
+      12px -12px 0 0 rgba(120,255,160,.95),
+      -12px  12px 0 0 rgba(255,160,90,.95),
+      12px  12px 0 0 rgba(160,170,255,.95);
+  }
+  35%{
+    opacity: 1;
+    box-shadow:
+      0 -28px 0 0 rgba(90,130,255,.92),
+      0  28px 0 0 rgba(0,255,195,.92),
+      -28px 0 0 0 rgba(255,255,255,.92),
+      28px  0 0 0 rgba(255,200,120,.92),
+      -20px -20px 0 0 rgba(255,120,200,.92),
+      20px -20px 0 0 rgba(120,255,160,.92),
+      -20px  20px 0 0 rgba(255,160,90,.92),
+      20px  20px 0 0 rgba(160,170,255,.92);
+  }
+  70%{
+    opacity: .4;
+    box-shadow:
+      0 -34px 0 0 rgba(90,130,255,.6),
+      0  34px 0 0 rgba(0,255,195,.6),
+      -34px 0 0 0 rgba(255,255,255,.55),
+      34px  0 0 0 rgba(255,200,120,.55),
+      -24px -24px 0 0 rgba(255,120,200,.55),
+      24px -24px 0 0 rgba(120,255,160,.55),
+      -24px  24px 0 0 rgba(255,160,90,.55),
+      24px  24px 0 0 rgba(160,170,255,.55);
+    transform: translate(-50%,-50%) scale(1.05);
+  }
+  100%{
+    opacity: 0;
+    box-shadow: none;
+    transform: translate(-50%,-50%) scale(1);
+  }
+}
+
+/* Make feedback message compact, not full-width */
+.msg{
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin-top: 12px;
+}
+
+/* Optional: nudge it visually under the row */
+.row + .msg{
+  margin-top: 12px;
+}
+
+/* Remove stray decorative dots / pseudo elements */
+.card::before,
+.card::after,
+.row::before,
+.row::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Hide logo area WITHOUT shifting timer/music */
+.brand.hidden{
+  visibility: hidden;
+}
+
+/* Kill any decorative pseudo-elements that can appear as "dots" */
+.wrap::before, .wrap::after,
+.card::before, .card::after,
+#screen::before, #screen::after,
+.footer::before, .footer::after,
+.row::before, .row::after,
+.brand::before, .brand::after {
+  content: none !important;
+  display: none !important;
+}
+
+.card, #screen{
+  overflow: hidden;
+}
+
+
+
