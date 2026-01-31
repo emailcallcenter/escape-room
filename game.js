@@ -66,7 +66,7 @@ const rooms = [
 
   {
     id: "clue2",
-    answer: "hello32",
+    answer: "160205",
     render: () => `
       <h2>Clue 2 — Locked Phone</h2>
 
@@ -80,13 +80,11 @@ const rooms = [
       </p>
 
       <p>
-        I remember sending you my phone password in a cryptic email on
-        <strong>January 23rd</strong>.
+        I remember emailing you on <strong>January 23rd</strong>, you know how there's an auto-reply each time us delegates email telling us what our assigned ticket ID # is? That was very helpful!
       </p>
 
       <p>
-        I'm sure you can figure it out. My password is pretty simple!
-        Here's how you decrypt my email: <strong>What comes first matters most, then count only what was truly said</strong>.
+        I'm sure you can figure out my password!
       </p>
 
       <div class="row">
@@ -319,19 +317,13 @@ const rooms = [
     <h2>Clue 10 — The One Ticket</h2>
 
     <p>
-      I think I accidentally caused a mini-emergency…
-      One simple question turned into an <strong>urgent</strong> ticket,
-      and now it’s hiding somewhere in your Redmine system.
+      I think I accidentally caused a mini-emergency… and now it’s hiding somewhere in your Redmine system.
     </p>
 
     <p>
       Here’s what I remember:
       the ticket might be <em>open</em>… or it might be <em>closed</em> at this point.
    </p>
-
-     <p>
-What I <strong>do</strong> know is that it was urgent! Yes, a very urgent ticket.
- </p>
 
         <p>
 And it's assigned to the person whose name starts with the letter T in <strong>AGT</strong>.
